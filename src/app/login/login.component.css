@@ -1,0 +1,16 @@
+.sign-in{
+    width: 45%;
+    margin:auto;
+    border-radius: 8px;
+    padding-top: 50px;
+}
+
+.sign-in-header{
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+
+.sign-in-footer{
+    padding-top: 25px;
+    cursor: pointer;
+}
