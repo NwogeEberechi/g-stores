@@ -25,6 +25,7 @@ import { MyOrderComponent } from './my-order/my-order.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { UserService } from './service/user.service';
 import { AdminAuthGuardService } from './service/admin-auth-guard.service';
+import { ProductService } from './service/product.service';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { AdminAuthGuardService } from './service/admin-auth-guard.service';
     AuthService,
     AuthGuardService,
     AdminAuthGuardService,
-    UserService
+    UserService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

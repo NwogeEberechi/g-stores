@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { Product } from '../models/product';
 import { Item } from '../models/item';
 import { Subcategory } from '../models/subcategory';
+import { ProductService } from '../service/product.service';
 
 @Component({
   selector: 'app-products',
@@ -15,9 +15,12 @@ export class ProductsComponent implements OnInit {
   items: any[] = [];
   products: Item[] = [];
 
+  constructor(private postService: ProductService) {
+    
+   }
 
-  constructor(private http: Http) {
-    http.get('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json')
+  ngOnInit() {
+    this.postService.getProducts()
     .subscribe(response => {
       this.data = response.json();
       this.data.forEach((category, index) => {
@@ -33,11 +36,8 @@ export class ProductsComponent implements OnInit {
           this.products.push(item.items[key]);
         }
       });
-      console.log(this.products);
     });
-   }
-
-  ngOnInit() {
   }
+
 
 }
