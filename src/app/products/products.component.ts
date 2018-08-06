@@ -21,22 +21,27 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.postService.getProducts()
-    .subscribe(response => {
-      this.data = response.json();
-      this.data.forEach((category, index) => {
-        this.subcategories.push(category.subcategories);
-      });
-      this.subcategories.forEach((item) => {
-        for (let key in item) {
-          this.items.push(item[key]);
-        }
-      });
-      this.items.forEach((item) => {
-        for (let key in item.items) {
-          this.products.push(item.items[key]);
-        }
-      });
-    });
+    .subscribe(
+      data => {
+        this.data = data;
+        this.data.forEach((category, index) => {
+          this.subcategories.push(category.subcategories);
+        });
+        this.subcategories.forEach((item) => {
+          for (let key in item) {
+            this.items.push(item[key]);
+          }
+        });
+        this.items.forEach((item) => {
+          for (let key in item.items) {
+            this.products.push(item.items[key]);
+          }
+        });
+      },
+      error => {
+      alert('An unexpected error occured.');
+      }
+    );
   }
 
 
